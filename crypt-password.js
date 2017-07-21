@@ -1,26 +1,14 @@
-/*jslint
-    browser, for
-*/
-/*global
-    md5_crypt
-*/
+function createSalt(len) {
+    var saltAlpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz./-+_"
 
-function random_base64(len) {
-    "use strict";
-
-    var charset = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    var chars;
-    var base64 = [];
-    var i = 0;
-
-    chars = charset.split("");
-    len = len || 8;
-
-    for (i = 0; i < len; i += 1) {
-        base64[i] = chars[Math.floor(Math.random() * 64)];
+    var salt = '$1$';
+    for(var i = 0; i < len; ++i) {
+        salt += saltAlpha.charAt(
+            Math.floor(Math.random() * saltAlpha.length));
     }
 
-    return base64.join("");
+    return salt;
 }
 
 /* Main */
@@ -42,7 +30,7 @@ function random_base64(len) {
         event.preventDefault();
 
         password.type = "password";
-        output.value = md5_crypt(password.value, random_base64());
+        output.value = CryptoJS.PHP_CRYPT_MD5(password.value, createSalt(8));
         output.select();
     });
 }());
