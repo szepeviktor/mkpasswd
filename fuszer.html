@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
+<style type="text/css">
+.container {
+  padding: 100.8px 89.6px
+}
+#password, #output {
+    width: 24em;
+}
+#output {
+    font-family: monospace;
+    font-weight: bold;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+
+<form class="form-horizontal">
+<fieldset>
+
+    <!-- Form Name -->
+    <legend>Fűszeres jelszó</legend>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-4">
+      <input autofocus id="password" name="password" placeholder="Jelszó" class="form-control input-md" type="text">
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <div class="col-md-4">
+        <button id="generate" name="generate" class="btn btn-primary">Fűszerez</button>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-4">
+      <input readonly id="output" name="output" class="form-control input-md" type="text">
+      </div>
+    </div>
+
+</fieldset>
+</form>
+
+        </div>
+    </div>
+</div>
+
+<script src="./fuszer.js"></script>
