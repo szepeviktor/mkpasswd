@@ -1,6 +1,5 @@
 function createSalt(len) {
-    var saltAlpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-        "abcdefghijklmnopqrstuvwxyz./-+_"
+    var saltAlpha = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     var salt = '$1$';
     for(var i = 0; i < len; ++i) {
