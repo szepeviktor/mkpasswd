@@ -1,10 +1,19 @@
-function createSalt(len) {
-    var saltAlpha = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+/*jslint
+    browser, for
+*/
+/*global
+    CryptoJS
+*/
 
-    var salt = '$1$';
-    for(var i = 0; i < len; ++i) {
-        salt += saltAlpha.charAt(
-            Math.floor(Math.random() * saltAlpha.length));
+function createSalt(len) {
+    "use strict";
+
+    var saltAlpha = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var salt = "$1$";
+    var i;
+
+    for (i = 0; i < len; i += 1) {
+        salt += saltAlpha.charAt(Math.floor(Math.random() * saltAlpha.length));
     }
 
     return salt;
