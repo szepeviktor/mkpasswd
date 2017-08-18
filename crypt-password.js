@@ -2,7 +2,7 @@
     browser, for
 */
 /*global
-    CryptoJS
+    alert, CryptoJS, zxcvbn
 */
 
 function createSalt(len) {
@@ -35,9 +35,18 @@ function createSalt(len) {
 
     // Button click
     button.addEventListener("click", function (event) {
+        var pwMeter;
+
         event.preventDefault();
 
         password.type = "password";
+
+        pwMeter = zxcvbn(password.value, ["szepe"]);
+        if (pwMeter.score < 3) {
+            alert("Kérem erős jelszavakat használjon.");
+            return false;
+        }
+
         output.value = CryptoJS.PHP_CRYPT_MD5(password.value, createSalt(8));
         output.select();
     });
